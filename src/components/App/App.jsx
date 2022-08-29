@@ -18,11 +18,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <ContactForm /> */}
-        {/* <p>Your Contacts:</p> */}
-        {/* <Filter />
-        <ContactList />
-        <ToastContainer autoClose={2500} /> */}
+        {/* <Route path="/contacts" element={<Contacts />} /> */}
       </Routes>
     </AppContainer>
   );

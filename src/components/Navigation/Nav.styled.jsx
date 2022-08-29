@@ -8,6 +8,7 @@ export const Link = styled(NavLink)`
   font-weight: 700;
   color: #2a363b;
   &.active {
-    color: #e84a5f;
+    border-bottom: 2px solid #e84a5f;
+    color: #1d628b;
   }
 `;

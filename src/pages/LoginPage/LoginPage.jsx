@@ -1,9 +1,7 @@
-import { Label } from 'pages/LoginPage/LoginPage.styled';
+import { Button, Form, Label, Input } from './LoginPage.styled';
 import { useState } from 'react';
-import { Button, Form, Input } from './Register.styled';
 
-export const RegisterPage = () => {
-  const [name, setName] = useState('');
+export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,32 +9,17 @@ export const RegisterPage = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    setName('');
     setEmail('');
     setPassword('');
   };
 
   return (
     <div>
-      <h2>Registration</h2>
+      <h2>Enter your Phonebook</h2>
       <Form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          Name
-          <Input
-            label="Name"
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            placeholder="Name"
-            required
-          />
-        </Label>
-
         <Label>
           Email
           <Input
-            label="Email"
             type="email"
             name="email"
             value={email}
@@ -45,11 +28,9 @@ export const RegisterPage = () => {
             required
           />
         </Label>
-
         <Label>
           Password
           <Input
-            label="Password"
             type="password"
             name="password"
             value={password}
@@ -58,8 +39,7 @@ export const RegisterPage = () => {
             required
           />
         </Label>
-
-        <Button type="submit">Register</Button>
+        <Button type="submit">Sing in</Button>
       </Form>
     </div>
   );

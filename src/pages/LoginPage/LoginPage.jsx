@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    dispatch(authOperations.login({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
   };

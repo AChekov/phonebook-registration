@@ -5,17 +5,21 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const register = createAsyncThunk('auth/register', async credential => {
   try {
-    const { data } = await axios.post('/user/signup', credential);
+    const { data } = await axios.post('/users/signup', credential);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.log('register :', error);
+  }
 });
 
-const login = createAsyncThunk('auth/login', async credential => {
+const logIn = createAsyncThunk('auth/login', async credential => {
   try {
-    const { data } = await axios.post('/user/login', credential);
+    const { data } = await axios.post('/users/login', credential);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.log('register :', error);
+  }
 });
 
-const operations = { register, login };
+const operations = { register, logIn };
 export default operations;

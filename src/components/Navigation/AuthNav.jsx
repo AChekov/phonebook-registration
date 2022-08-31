@@ -8,3 +8,5 @@ export const AuthNav = () => {
     </nav>
   );
 };
+
+export default AuthNav;

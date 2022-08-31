@@ -1,6 +1,6 @@
 import { Link } from './Nav.styled';
 
-export const UserNav = () => {
+export const Navigation = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
@@ -8,3 +8,5 @@ export const UserNav = () => {
     </nav>
   );
 };
+
+export default Navigation;

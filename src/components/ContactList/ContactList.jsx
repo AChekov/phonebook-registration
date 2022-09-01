@@ -2,7 +2,7 @@ import { List, Error } from './ContactList.styled';
 import ContactItem from 'components/ContactItem';
 import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
-import { getFilter } from 'redux/filterSlice';
+import { getFilter } from 'redux/contactsSlice';
 import { useGetContactsQuery } from 'redux/contactsAPI';
 
 const ContactList = () => {
@@ -25,8 +25,8 @@ const ContactList = () => {
   return (
     <List>
       {renderContacts &&
-        contactList.map(({ id, name, phone }) => (
-          <ContactItem id={id} key={id} name={name} number={phone} />
+        contactList.map(({ id, name, number }) => (
+          <ContactItem id={id} key={id} name={name} number={number} />
         ))}
       {isLoading && <Loader />}
       {error && (

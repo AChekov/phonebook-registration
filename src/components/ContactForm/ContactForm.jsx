@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const { data: contacts } = useGetContactsQuery();
   const [createContact] = useCreateContactMutation();
@@ -16,12 +16,12 @@ export const ContactForm = () => {
   const handleInputChange = evt => {
     const { value } = evt.currentTarget;
 
-    evt.currentTarget.name === 'name' ? setName(value) : setPhone(value);
+    evt.currentTarget.name === 'name' ? setName(value) : setNumber(value);
   };
 
   const addContact = data => {
-    const contactName = contacts.map(contact => contact.name.toLowerCase());
-    const isAdding = contactName.includes(data.name.toLowerCase());
+    const contactName = contacts?.map(contact => contact.name.toLowerCase());
+    const isAdding = contactName?.includes(data.name.toLowerCase());
 
     if (!isAdding) {
       createContact(data);
@@ -36,7 +36,7 @@ export const ContactForm = () => {
     evt.preventDefault();
     const contact = {
       name,
-      phone,
+      number,
     };
 
     addContact(contact);
@@ -45,7 +45,7 @@ export const ContactForm = () => {
   // очистка инпутов
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -65,11 +65,11 @@ export const ContactForm = () => {
       <Label>
         <Input
           type="tel"
-          name="phone"
+          name="number"
           placeholder="Phone number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={phone}
+          value={number}
           onChange={handleInputChange}
           required
         />

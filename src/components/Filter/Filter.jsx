@@ -1,14 +1,13 @@
 import { InputFilter, LabelFilter } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterContacts } from 'redux/contactsSlice';
-import { getFilter } from 'redux/contactsSlice';
+import { getFilter, filter } from 'redux/contactsSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const filterName = useSelector(getFilter);
 
   const handleInput = evt => {
-    dispatch(filterContacts(evt.currentTarget.value));
+    dispatch(filter(evt.currentTarget.value.trim()));
   };
 
   return (

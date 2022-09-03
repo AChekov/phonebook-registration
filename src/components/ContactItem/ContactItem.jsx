@@ -1,5 +1,7 @@
 import { useDeleteContactMutation } from 'redux/contactsAPI';
-import { Item, Contact, BtnDelete } from './ContactItem.style';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Item, Contact } from './ContactItem.style';
 import { RotatingLines } from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 
@@ -11,13 +13,14 @@ const ContactItem = ({ id, name, number }) => {
       <Contact>
         {name}: {number}
       </Contact>
-      <BtnDelete
-        type="button"
+      <IconButton
+        color="primary"
+        aria-label="delete"
         onClick={() => deleteContact(id)}
         disabled={isDeleting}
       >
-        {isDeleting && <RotatingLines width="15" />} Delete
-      </BtnDelete>
+        {isDeleting && <RotatingLines width="15" />} <DeleteIcon />
+      </IconButton>
     </Item>
   );
 };

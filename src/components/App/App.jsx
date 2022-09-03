@@ -1,5 +1,5 @@
 import { AppContainer } from './App.styled';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from 'components/AppBar';
@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import { authOperations } from 'redux/auth';
 import PrivateRoute from 'components/PrivateRoute';
+import Loader from 'components/Loader';
+import PublicRoute from 'components/PublicRoute';
 
 const Home = lazy(() => import('../../pages/HomePage'));
 const Register = lazy(() => import('../../pages/RegisterPage'));
@@ -27,16 +29,46 @@ const App = () => {
   return (
     <AppContainer>
       <AppBar />
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          {/* <Route path="/contacts" element={<Contacts />} /> */}
+          <Route
+            exact
+            path="/"
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          />
 
-          <PrivateRoute path="/contacts">
-            <Contacts />
-          </PrivateRoute>
+          <Route
+            path="/register"
+            element={
+              <PublicRoute restricted>
+                <Register />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <PublicRoute restricted>
+                <Login />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <Contacts />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
       <ToastContainer />

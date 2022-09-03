@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: 5px;
 `;
 
 export const Avatar = styled.img`

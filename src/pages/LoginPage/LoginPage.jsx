@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
-import { Form, Label } from './LoginPage.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
+import { Form, Label, Error } from './LoginPage.styled';
 // import FormControl from '@mui/material/FormControl';
 // import InputLabel from '@mui/material/InputLabel';
 // import OutlinedInput from '@mui/material/OutlinedInput';
@@ -16,6 +16,7 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(authSelectors.getUserError);
 
   // const [values, setValues] = useState({
   //   amount: '',
@@ -91,6 +92,7 @@ export const LoginPage = () => {
           Sing in
         </Button>
       </Form>
+      {error && <Error>{error}</Error>}
     </div>
   );
 };

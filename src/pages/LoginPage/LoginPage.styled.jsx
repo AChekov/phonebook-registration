@@ -18,6 +18,13 @@ export const Input = styled.input`
   border-radius: 5px;
 `;
 
+export const Error = styled.p`
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+`;
+
 // export const Button = styled.button`
 //   width: 200px;
 //   height: 40px;

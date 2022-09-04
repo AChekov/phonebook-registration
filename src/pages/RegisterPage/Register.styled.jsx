@@ -37,3 +37,10 @@ export const Button = styled.button`
     transform: scale(1.05);
   }
 `;
+
+export const Error = styled.p`
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+`;

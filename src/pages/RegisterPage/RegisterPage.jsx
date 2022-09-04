@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
 import { TextField, Button } from '@mui/material';
-import { Form, Label } from './Register.styled';
+import { Form, Label, Error } from './Register.styled';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(authSelectors.getUserError);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -82,6 +83,7 @@ export const RegisterPage = () => {
         <Button variant="contained" type="submit">
           Register
         </Button>
+        {error && <Error>{error}</Error>}
       </Form>
     </div>
   );

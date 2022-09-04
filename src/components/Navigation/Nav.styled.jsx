@@ -7,9 +7,8 @@ export const Link = styled(NavLink)`
   padding: 12;
   margin-right: 12px;
   font-weight: 700;
-  color: #2a363b;
+  color: white;
   &.active {
-    border-bottom: 2px solid #e84a5f;
-    color: #1d628b;
+    color: yellow;
   }
 `;

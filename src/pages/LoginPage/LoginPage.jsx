@@ -1,12 +1,29 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-import { Button, Form, Label, Input } from './LoginPage.styled';
+import { Form, Label } from './LoginPage.styled';
+// import FormControl from '@mui/material/FormControl';
+// import InputLabel from '@mui/material/InputLabel';
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import IconButton from '@mui/material/IconButton';
+// import Visibility from '@mui/icons-material/Visibility';
+// import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Button, TextField } from '@mui/material';
+// import TextField from '@mui/material/TextField';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // const [values, setValues] = useState({
+  //   amount: '',
+  //   password: '',
+  //   weight: '',
+  //   weightRange: '',
+  //   showPassword: false,
+  // });
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -26,13 +43,27 @@ export const LoginPage = () => {
     setPassword('');
   };
 
+  // const handleClickShowPassword = () => {
+  //   setValues({
+  //     ...values,
+  //     showPassword: !values.showPassword,
+  //   });
+  // };
+
+  // const handleMouseDownPassword = event => {
+  //   event.preventDefault();
+  // };
+
   return (
     <div>
       <h2>Enter your Phonebook</h2>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Label>
-          Email
-          <Input
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            size="small"
+            label="Name"
             type="email"
             name="email"
             value={email}
@@ -42,17 +73,23 @@ export const LoginPage = () => {
           />
         </Label>
         <Label>
-          Password
-          <Input
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            size="small"
+            label="Password"
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
-            placeholder="password"
+            placeholder="at least 7 characters"
             required
           />
         </Label>
-        <Button type="submit">Sing in</Button>
+
+        <Button variant="contained" type="submit">
+          Sing in
+        </Button>
       </Form>
     </div>
   );

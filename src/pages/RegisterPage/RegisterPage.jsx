@@ -1,8 +1,8 @@
-import { Label } from 'pages/LoginPage/LoginPage.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-import { Button, Form, Input } from './Register.styled';
+import { TextField, Button } from '@mui/material';
+import { Form, Label } from './Register.styled';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -36,21 +36,21 @@ export const RegisterPage = () => {
       <h2>Registration</h2>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Label>
-          Name
-          <Input
+          <TextField
             label="Name"
             type="text"
             name="name"
             value={name}
             onChange={handleChange}
-            placeholder="Name"
             required
+            id="outlined-basic"
+            variant="outlined"
+            size="small"
           />
         </Label>
 
         <Label>
-          Email
-          <Input
+          <TextField
             label="Email"
             type="email"
             name="email"
@@ -58,23 +58,30 @@ export const RegisterPage = () => {
             onChange={handleChange}
             placeholder="example@mail.com"
             required
+            id="outlined-basic"
+            variant="outlined"
+            size="small"
           />
         </Label>
 
         <Label>
-          Password
-          <Input
+          <TextField
             label="Password"
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
-            placeholder="password"
+            placeholder="at least 7 characters"
             required
+            id="outlined-basic"
+            variant="outlined"
+            size="small"
           />
         </Label>
 
-        <Button type="submit">Register</Button>
+        <Button variant="contained" type="submit">
+          Register
+        </Button>
       </Form>
     </div>
   );
